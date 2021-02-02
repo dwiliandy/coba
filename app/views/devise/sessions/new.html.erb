@@ -1,0 +1,35 @@
+<body class="bg-gradient-primary">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                            </div>
+                            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                              <%= render "devise/shared/error_messages", resource: resource %>
+                                <div class="form-group">
+                                  <%= f.input :email,autofocus: true, autocomplete: "email",placeholder: "Email", label: false, input_html: {class: "form-control form-control-user"} %>
+                                </div>
+                                <div class="form-group">
+                                  <%= f.input :password, autocomplete: "current-password", placeholder: "Password", input_html: {class: "form-control form-control-user"}, label: false%>
+                                </div>
+                            <div class="actions">
+                              <%= f.submit "Login", class: 'btn btn-primary btn-user btn-block' %>
+                            </div>
+                            <hr>
+                            <%= render "devise/shared/links" %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</body>
