@@ -36,12 +36,5 @@ yarn-debug.log*
 .yarn-integrity
 
 
-
-#ignore public
-/public
-
-#ignore test
-/test
-
 #ignore vendor
 /vendor
