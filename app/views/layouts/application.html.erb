@@ -9,29 +9,24 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body id="page-top">
-    <div id="wrapper">
+   <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
       <% if current_user.blank?%>
-          <% if notice %>
-            <p class="alert alert-success"><%= notice %></p>
-          <% end %>
-          <% if alert %>
-            <p class="alert alert-danger"><%= alert %></p>
-          <% end %>
-          <%= yield %>
+        <%= yield %>
       <%else%>
+      <div id="wrapper">
         <%= render'shared/navbar'%>
         <div id="content-wrapper" class="d-flex flex-column">
           <div id="content">
             <%= render 'shared/header'%>
-            <% if notice %>
-              <p class="alert alert-success"><%= notice %></p>
-            <% end %>
-            <% if alert %>
-              <p class="alert alert-danger"><%= alert %></p>
-            <% end %>
             <%= yield %>
           </div>
           <%= render 'shared/footer'%>
+          </div>
         </div>
       </div>
       <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -47,7 +42,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <a class="btn btn-primary" href="login.html">Logout</a>
+              <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class =>"btn btn-primary" %>
             </div>
           </div>
         </div>

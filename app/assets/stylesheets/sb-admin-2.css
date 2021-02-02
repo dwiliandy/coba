@@ -5048,6 +5048,8 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #0f6848;
   background-color: #d2f4e8;
   border-color: #bff0de;
+  text-align: center;
+  
 }
 
 .alert-success hr {
@@ -5090,6 +5092,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #78261f;
   background-color: #fadbd8;
   border-color: #f8ccc8;
+  text-align: center;
 }
 
 .alert-danger hr {
