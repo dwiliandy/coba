@@ -35,8 +35,7 @@
 yarn-debug.log*
 .yarn-integrity
 
-#ignore bin
-/bin
+
 
 #ignore public
 /public
