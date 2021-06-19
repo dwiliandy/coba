@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+MataPelajaran.create(nama: 'Matematika' )
+MataPelajaran.create(nama: 'IPA')
+MataPelajaran.create(nama: 'IPS' )
+MataPelajaran.create(nama: 'Bahas Inggris' )
+MataPelajaran.create(nama: 'Bahasa Indonesia' )
+MataPelajaran.create(nama: 'Penjaskes' )
+MataPelajaran.create(nama: 'TIK' )

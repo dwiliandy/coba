@@ -1,0 +1,2 @@
+class MataPelajaran < ApplicationRecord
+end

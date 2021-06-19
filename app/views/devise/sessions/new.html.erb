@@ -13,7 +13,7 @@
                             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                               <%= render "devise/shared/error_messages", resource: resource %>
                                 <div class="form-group">
-                                  <%= f.input :email, autofocus: true, placeholder: "Email", label: false, input_html: {class: "form-control form-control-user"} %>
+                                  <%= f.input :username, autofocus: true, placeholder: "Username", label: false, input_html: {class: "form-control form-control-user"} %>
                                 </div>
                                 <div class="form-group">
                                   <%= f.input :password, autocomplete: "current-password", placeholder: "Password", input_html: {class: "form-control form-control-user"}, label: false%>
