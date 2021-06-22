@@ -1,0 +1,31 @@
+#content-wrapper.d-flex.flex-column
+  #content
+    .container-fluid
+      .card.shadow.mb-4
+        .card-header.py-3
+          h2.m-0.font-weight-bold
+            | Data User
+        / .row
+          .col-9
+            = search_form_for @q, url: admins_orders_path do |f|
+              .row
+                .col-6
+                  = f.search_field :cart_user_name_or_status_cont, placeholder: "Search by Username or Status", class: 'form-control admin-search'
+                .col-3
+                  = f.button :Search, class: "btn btn-sm btn-success"
+      .table-responsive
+        table#dataTable.table.table-bordered[width="100%" cellspacing="0"]
+          thead
+            tr
+              th.th-sm
+                | Nama User
+              th.th-sm
+                | Role
+          tbody
+            - @users.each do |user|
+              tr
+                td
+                  = user.name.humanize
+                td
+                  = user.role.humanize
+                
