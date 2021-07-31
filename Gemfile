@@ -45,6 +45,7 @@ group :development do
   gem 'spring'
   gem "letter_opener" 
   gem 'annotate'
+  gem 'rails-erd'
 end
 
 group :test do
