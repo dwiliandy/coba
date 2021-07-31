@@ -6,7 +6,7 @@ class CreateAnggotaKeluargas < ActiveRecord::Migration[6.1]
       t.integer :jenis_kelamin
       t.string :tempat_lahir
       t.date :tanggal_lahir
-
+      t.references :nama_keluarga, null: false, foreign_key: true
       t.timestamps
     end
   end

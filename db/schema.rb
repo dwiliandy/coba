@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 2021_07_31_123058) do
     t.integer "jenis_kelamin"
     t.string "tempat_lahir"
     t.date "tanggal_lahir"
+    t.bigint "nama_keluarga_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["nama_keluarga_id"], name: "index_anggota_keluargas_on_nama_keluarga_id"
   end
 
   create_table "mata_pelajarans", force: :cascade do |t|
@@ -53,4 +55,5 @@ ActiveRecord::Schema.define(version: 2021_07_31_123058) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "anggota_keluargas", "nama_keluargas"
 end
