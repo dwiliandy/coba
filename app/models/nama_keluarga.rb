@@ -1,0 +1,2 @@
+class NamaKeluarga < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class AnggotaKeluarga < ApplicationRecord
+end

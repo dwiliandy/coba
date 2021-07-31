@@ -8,10 +8,3 @@
 
 User.create(email:'admin@admin.com', username:'admin', password:'password', role:100, name:'admin')
 
-MataPelajaran.create(nama: 'Matematika' )
-MataPelajaran.create(nama: 'IPA')
-MataPelajaran.create(nama: 'IPS' )
-MataPelajaran.create(nama: 'Bahas Inggris' )
-MataPelajaran.create(nama: 'Bahasa Indonesia' )
-MataPelajaran.create(nama: 'Penjaskes' )
-MataPelajaran.create(nama: 'TIK' )

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MataPelajaranTest < ActiveSupport::TestCase
+class AnggotaKeluargaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
