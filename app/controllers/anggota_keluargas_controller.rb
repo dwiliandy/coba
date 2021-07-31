@@ -1,0 +1,2 @@
+class AnggotaKeluargasController < ApplicationController
+end

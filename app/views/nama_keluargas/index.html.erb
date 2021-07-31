@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Nama Keluarga</h6>
+    </div>
+    <div class="card-body">
+    <div class="col-3">
+      <%= link_to 'Tambah Keluarga', new_nama_keluarga_path, class: "btn btn-sm btn-success float-right"%>
+    </div>
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>nama Keluarga</th>
+                <th>Nomor Keluarga</th>
+              </tr>
+            </thead>
+              <%@nama_keluargas.each_with_index do |nama,index|%>
+                <tbody>
+                  <td><%=index+1%></td>
+                  <td><%=nama.nama%></td>
+                  <td><%=nama.NomorKK%></td>
+                </tbody>
+              <%end%>
+          </table>
+        </div>
+    </div>
+  </div>
+
+</div>

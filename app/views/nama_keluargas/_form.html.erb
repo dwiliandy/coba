@@ -1,0 +1,33 @@
+<div class="container">
+  <h1><%=params[:action].capitalize%> Keluarga</h1>
+  <div class="row">
+    <div class="col-12">
+      <%= simple_form_for @nama_keluarga do |f| %>
+        <div class="row">
+          <div class="col-6">
+            <%= f.input :nama %>
+          </div>
+          <div class="col-6">
+            <%= f.input :NomorKK %>
+          </div>
+          <div class = "row">
+          <h3>Anggota Keluarga</h3>
+            <div class="col-lg-10">
+              <%= f.simple_fields_for :anggota_keluargas do |anggota|%>
+                <%= render 'anggota_keluarga_fields', f: anggota%>
+              <%end%>
+            </div>
+            <div class="col-lg-2">
+              <%= link_to_add_association 'Tambah Anggota', f, :anggota_keluargas%>
+            </div>
+          </div>
+                 
+        </div>
+          <%= f.button :submit, class: "btn btn-info" %>
+
+          <%= link_to "Cancel", nama_keluargas_path, class: "btn btn-danger" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

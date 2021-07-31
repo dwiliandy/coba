@@ -9,4 +9,8 @@
 #  updated_at :datetime         not null
 #
 class NamaKeluarga < ApplicationRecord
+  has_many :anggota_keluargas
+  accepts_nested_attributes_for :anggota_keluargas, :reject_if => :all_blank, allow_destroy: true
+
+
 end

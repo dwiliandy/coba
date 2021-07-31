@@ -21,6 +21,6 @@
 #  fk_rails_...  (nama_keluarga_id => nama_keluargas.id)
 #
 class AnggotaKeluarga < ApplicationRecord
-
+  belongs_to :nama_keluarga
   enum jenis_kelamin: {pria: 1, wanita: 2}
 end
