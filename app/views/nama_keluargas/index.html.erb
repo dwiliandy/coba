@@ -20,7 +20,7 @@
               <%@nama_keluargas.each_with_index do |nama,index|%>
                 <tbody>
                   <td><%=index+1%></td>
-                  <td><%=link to nama.nama, edit_nama_keluarga_path(nama)%></td>
+                  <td><%=link_to nama.nama, edit_nama_keluarga_path(nama)%></td>
                   <td><%=nama.nomor_kartu_keluarga%></td>
                 </tbody>
               <%end%>
