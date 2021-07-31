@@ -203,6 +203,14 @@ img {
   border-style: none;
 }
 
+a.btn.btn-sm.btn-danger.remove-association{
+  margin: 0;
+  position: absolute;
+  top: 58%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 svg {
   overflow: hidden;
   vertical-align: middle;

@@ -1,20 +1,24 @@
-<div class="row">
-  <div class="col-4">
-    <%= f.input :nama %>
+<div class = "nested-fields">
+  <div class="row">
+    <div class="col-4">
+      <%= f.input :nama %>
+    </div>
+    <div class="col-4">
+      <%= f.input :nik %>
+    </div>
+    <div class="col-4">
+      <%= f.input :jenis_kelamin, include_blank: false, collection: AnggotaKeluarga.jenis_kelamins.keys.map { |w| [w.humanize, w] }%>
+    </div>
   </div>
-  <div class="col-4">
-    <%= f.input :nik %>
-  </div>
-  <div class="col-4">
-    <%= f.input :jenis_kelamin, include_blank: false, collection: AnggotaKeluarga.jenis_kelamins.keys.map { |w| [w.humanize, w] }%>
+  <div class="row">
+    <div class="col-4">
+      <%= f.input :tempat_lahir%>
+    </div>
+    <div class="col-6">
+      <%= f.input :tanggal_lahir%>
+    </div>
+    <div class="col-2">
+      <%= link_to_remove_association('x', f, class: "btn btn-sm btn-danger remove-association") %>
+    </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-4">
-    <%= f.input :tempat_lahir%>
-  </div>
-  <div class="col-4">
-    <%= f.input :tanggal_lahir%>
-  </div>
-</div>
- <%= link_to_remove_association "hapus anggota", f %>
