@@ -20,8 +20,8 @@
               <%@nama_keluargas.each_with_index do |nama,index|%>
                 <tbody>
                   <td><%=index+1%></td>
-                  <td><%=nama.nama%></td>
-                  <td><%=nama.NomorKK%></td>
+                  <td><%=link to nama.nama, edit_nama_keluarga_path(nama)%></td>
+                  <td><%=nama.nomor_kartu_keluarga%></td>
                 </tbody>
               <%end%>
           </table>
