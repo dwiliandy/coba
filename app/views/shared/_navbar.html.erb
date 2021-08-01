@@ -8,35 +8,22 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item active">
-      <%=link_to root_path, class: "nav-link" do%>
-            <i class= "fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-      <%end%>
-    </li>
-
-    <li class="nav-item active">
       <%=link_to nama_keluargas_path, class: "nav-link" do%>
             <i class="fas fa-users"></i>
             <span>Nama Keluarga</span></a>
       <%end%>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-  
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-cogs"></i>
-            <span>Components</span>
+            <i class="fas fa-user"></i>
+            <span>Daftar Anggota</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <a class="collapse-item" href="<%=pkb_anggota_keluargas_path%>">PKB</a>
+                <a class="collapse-item" href="<%=wki_anggota_keluargas_path%>">WKI</a>
+                <a class="collapse-item" href="<%=pemuda_anggota_keluargas_path%>">Pemuda</a>
             </div>
         </div>
     </li>

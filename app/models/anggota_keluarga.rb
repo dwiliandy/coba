@@ -30,6 +30,10 @@ class AnggotaKeluarga < ApplicationRecord
   enum status_hubungan: {kepala_keluarga: 1, istri: 2, anak: 3, orang_tua: 4}
   enum status_perkawinan: {kawin: 1, belum_kawin: 2, cerai_hidup: 3, cerai_mati: 4}
 
+  scope :pkb, ->{where('jenis_kelamin = ? and status_perkawinan != ?',1,2)}
+  scope :wki, ->{where('jenis_kelamin = ? and status_perkawinan != ?',2,2)}
+  scope :pemuda, ->{where("status_perkawinan = ? and date_part('year', age(tanggal_lahir)) >= ? AND date_part('year', age(tanggal_lahir)) <= ?",2,17,35)}
+
   BAPTIS_SIDI_OPTIONS = [
     ["Sudah", 1],
     ["Belum", 2],
@@ -42,6 +46,11 @@ class AnggotaKeluarga < ApplicationRecord
        :name => x
       }
     end
+  end
+
+  def umur
+    now = Date.today
+    now.year - tanggal_lahir.year - ((now.month > tanggal_lahir.month || (now.month == tanggal_lahir.month && now.day >= tanggal_lahir.day)) ? 0 : 1)
   end
 
 end

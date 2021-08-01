@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   end
 
   resources :nama_keluargas
-  resources :anggota_keluargas
+  resources :anggota_keluargas do
+    collection do
+      get 'pkb'
+      get 'wki'
+      get 'pemuda'
+    end
+  end
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all

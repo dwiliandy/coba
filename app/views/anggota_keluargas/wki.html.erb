@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Anggota</h6>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-6">
+        </div>
+        <div class="col-lg-3">
+        <%=link_to wki_anggota_keluargas_path(format: :xlsx), class: "btn btn-sm btn-success float-right" do%>
+            <i class="fas fa-download"></i> Download Data Excel
+          <%end%>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Anggota</th>
+                <th>Keluarga</th>
+                <th>Kolom</th>
+              </tr>
+            </thead>
+              <%@anggota_keluargas.each_with_index do |anggota,index|%>
+                <tbody>
+                  <td><%=index+1%></td>
+                  <td><%=anggota.nama.humanize%></td>
+                  <td><%=anggota.nama_keluarga.nama%></td>
+                  <td><%=anggota.nama_keluarga.kolom.nama%></td>
+                  
+                </tbody>
+              <%end%>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

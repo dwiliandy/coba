@@ -26,8 +26,10 @@
                   <%= f.simple_fields_for :anggota_keluargas do |anggota|%>
                     <%= render 'anggota_keluarga_fields', f: anggota%>
                   <%end%>
-                  <%= link_to_add_association 'Tambah Anggota', f, :anggota_keluargas, class: "btn btn-sm btn-success"%>
-                  <br><br><br>
+                  <div class="links">
+                    <%= link_to_add_association 'Tambah Anggota', f, :anggota_keluargas, class: "btn btn-sm btn-success"%>
+                  </div>
+                  <br>
               </div>       
             </div>
               <%= f.button :submit, class: "btn btn-info" %>
