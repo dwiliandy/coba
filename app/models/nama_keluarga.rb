@@ -7,8 +7,18 @@
 #  nomor_kartu_keluarga :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  kolom_id             :bigint           not null
+#
+# Indexes
+#
+#  index_nama_keluargas_on_kolom_id  (kolom_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (kolom_id => koloms.id)
 #
 class NamaKeluarga < ApplicationRecord
+  belongs_to :kolom
   has_many :anggota_keluargas
   accepts_nested_attributes_for :anggota_keluargas, :reject_if => :all_blank, allow_destroy: true
 

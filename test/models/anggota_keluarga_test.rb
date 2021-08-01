@@ -2,15 +2,17 @@
 #
 # Table name: anggota_keluargas
 #
-#  id               :bigint           not null, primary key
-#  jenis_kelamin    :integer
-#  nama             :string
-#  nik              :string
-#  tanggal_lahir    :date
-#  tempat_lahir     :string
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  nama_keluarga_id :bigint           not null
+#  id                :bigint           not null, primary key
+#  jenis_kelamin     :integer
+#  nama              :string
+#  nik               :string
+#  status_hubungan   :integer
+#  status_perkawinan :integer
+#  tanggal_lahir     :date
+#  tempat_lahir      :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  nama_keluarga_id  :bigint           not null
 #
 # Indexes
 #

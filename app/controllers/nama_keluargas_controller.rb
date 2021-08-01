@@ -2,7 +2,15 @@ class NamaKeluargasController < ApplicationController
   before_action :set_nama_keluarga, except: [:index, :new, :create]
 
   def index
-    @nama_keluargas = NamaKeluarga.all
+    @nama_keluargas = NamaKeluarga.all.order(kolom_id: :asc)
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename=NamaKeluarga.xlsx"
+      }
+      format.html { render :index }
+    end
   end
 
   def new
@@ -47,7 +55,7 @@ class NamaKeluargasController < ApplicationController
   private
 
   def nama_keluarga_params
-    params.require(:nama_keluarga).permit(:nama, :NomorKK, anggota_keluargas_attributes: 
+    params.require(:nama_keluarga).permit(:nama, :nomor_kartu_keluarga, :kolom_id, anggota_keluargas_attributes: 
       [:id, :nama, :jenis_kelamin, :nik, 
         :tanggal_lahir, :tempat_lahir, :_destroy])
   end

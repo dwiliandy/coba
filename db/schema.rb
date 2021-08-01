@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_31_123058) do
+ActiveRecord::Schema.define(version: 2021_08_01_014806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,15 @@ ActiveRecord::Schema.define(version: 2021_07_31_123058) do
     t.bigint "nama_keluarga_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status_perkawinan"
+    t.integer "status_hubungan"
     t.index ["nama_keluarga_id"], name: "index_anggota_keluargas_on_nama_keluarga_id"
+  end
+
+  create_table "koloms", force: :cascade do |t|
+    t.string "nama"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "nama_keluargas", force: :cascade do |t|
@@ -32,6 +40,8 @@ ActiveRecord::Schema.define(version: 2021_07_31_123058) do
     t.string "nomor_kartu_keluarga"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "kolom_id", null: false
+    t.index ["kolom_id"], name: "index_nama_keluargas_on_kolom_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,4 +60,5 @@ ActiveRecord::Schema.define(version: 2021_07_31_123058) do
   end
 
   add_foreign_key "anggota_keluargas", "nama_keluargas"
+  add_foreign_key "nama_keluargas", "koloms"
 end

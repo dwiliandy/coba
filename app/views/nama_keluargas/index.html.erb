@@ -5,9 +5,18 @@
         <h6 class="m-0 font-weight-bold text-primary">Nama Keluarga</h6>
     </div>
     <div class="card-body">
-    <div class="col-3">
-      <%= link_to 'Tambah Keluarga', new_nama_keluarga_path, class: "btn btn-sm btn-success float-right"%>
-    </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <%= link_to 'Tambah Keluarga', new_nama_keluarga_path, class: "btn btn-sm btn-success "%>
+        </div>
+        <div class="col-lg-6">
+        </div>
+        <div class="col-lg-3">
+          <%= link_to 'Download as Excel',nama_keluargas_path(format: :xlsx), class: "btn btn-sm btn-success float-right"%>
+        </div>
+      </div>
+      <br>
+      <div class="row">
         <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
@@ -15,6 +24,7 @@
                 <th>No</th>
                 <th>nama Keluarga</th>
                 <th>Nomor Keluarga</th>
+                <th>Kolom</th>
               </tr>
             </thead>
               <%@nama_keluargas.each_with_index do |nama,index|%>
@@ -22,10 +32,12 @@
                   <td><%=index+1%></td>
                   <td><%=link_to nama.nama, edit_nama_keluarga_path(nama)%></td>
                   <td><%=nama.nomor_kartu_keluarga%></td>
+                  <td><%=nama.kolom.nama%></td>
                 </tbody>
               <%end%>
           </table>
         </div>
+      </div>
     </div>
   </div>
 

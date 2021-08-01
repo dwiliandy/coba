@@ -4,29 +4,27 @@
     <div class="col-12">
       <%= simple_form_for @nama_keluarga do |f| %>
         <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <%= f.input :nama %>
           </div>
-          <div class="col-6">
+          <div class="col-4">
             <%= f.input :nomor_kartu_keluarga %>
-          </div>    
-          <div>
-          <h3>Anggota Keluarga</h3>
           </div>
-          
+          <div class="col-4">
+            <%= f.input :kolom_id, include_blank: false, :collection => Kolom.all,:label_method => :nama,
+            :value_method => :id,:label => "Kolom" ,:include_blank => false  %>
+          </div>
+          <h3>Data Anggota Keluarga :</h3>
             <div class="col-lg-12">
               <%= f.simple_fields_for :anggota_keluargas do |anggota|%>
                 <%= render 'anggota_keluarga_fields', f: anggota%>
               <%end%>
               <%= link_to_add_association 'Tambah Anggota', f, :anggota_keluargas, class: "btn btn-sm btn-success"%>
               <br><br><br>
-            </div>
-                 
+          </div>       
         </div>
           <%= f.button :submit, class: "btn btn-info" %>
-
           <%= link_to "Cancel", nama_keluargas_path, class: "btn btn-danger" %>
-
       <% end %>
     </div>
   </div>
