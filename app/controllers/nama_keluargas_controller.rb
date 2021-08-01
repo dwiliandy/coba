@@ -55,9 +55,13 @@ class NamaKeluargasController < ApplicationController
   private
 
   def nama_keluarga_params
-    params.require(:nama_keluarga).permit(:nama, :nomor_kartu_keluarga, :kolom_id, anggota_keluargas_attributes: 
-      [:id, :nama, :jenis_kelamin, :nik, 
-        :tanggal_lahir, :tempat_lahir, :_destroy])
+    params.require(:nama_keluarga).permit(
+      :nama, :nomor_kartu_keluarga, :kolom_id, 
+      anggota_keluargas_attributes: [
+        :id, :nama, :jenis_kelamin, :nik, 
+        :tanggal_lahir, :tempat_lahir, 
+        :baptis, :sidi, :status_hubungan, :status_perkawinan, :_destroy]
+    )
   end
 
   def set_nama_keluarga

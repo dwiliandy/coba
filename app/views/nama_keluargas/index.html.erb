@@ -7,12 +7,16 @@
     <div class="card-body">
       <div class="row">
         <div class="col-lg-3">
-          <%= link_to 'Tambah Keluarga', new_nama_keluarga_path, class: "btn btn-sm btn-success "%>
+          <%=link_to new_nama_keluarga_path, class: "btn btn-sm btn-success" do%>
+            <i class="fas fa-plus"></i> Tambah Keluarga
+          <%end%>
         </div>
         <div class="col-lg-6">
         </div>
         <div class="col-lg-3">
-          <%= link_to 'Download as Excel',nama_keluargas_path(format: :xlsx), class: "btn btn-sm btn-success float-right"%>
+          <%=link_to nama_keluargas_path(format: :xlsx), class: "btn btn-sm btn-success float-right" do%>
+            <i class="fas fa-download"></i> Download Data Excel
+          <%end%>
         </div>
       </div>
       <br>
@@ -22,17 +26,32 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>nama Keluarga</th>
+                <th>Nama Keluarga</th>
                 <th>Nomor Keluarga</th>
                 <th>Kolom</th>
+                <th>Action</th>
               </tr>
             </thead>
               <%@nama_keluargas.each_with_index do |nama,index|%>
                 <tbody>
                   <td><%=index+1%></td>
-                  <td><%=link_to nama.nama, edit_nama_keluarga_path(nama)%></td>
+                  <td><%=nama.nama%></td>
                   <td><%=nama.nomor_kartu_keluarga%></td>
                   <td><%=nama.kolom.nama%></td>
+                  <td>
+                  <div class="row">
+                  <div class="col-lg-2">
+                    <%=link_to edit_nama_keluarga_path(nama), class: "btn btn-sm btn-success" do%>
+                      <i class="fas fa-edit"></i>
+                    <%end%>
+                  </div>
+                  <div class="col-lg-2">
+                    <%=link_to nama_keluarga_path(nama), class: "btn btn-sm btn-primary" do%>
+                      <i class="fas fa-eye"></i>
+                    <%end%>
+                  </div>
+                  </div>
+                  </td>
                 </tbody>
               <%end%>
           </table>

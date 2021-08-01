@@ -203,6 +203,10 @@ img {
   border-style: none;
 }
 
+.container{
+  background-color: #f8f9fc;
+}
+
 a.btn.btn-sm.btn-danger.remove-association{
   margin: 0;
   position: absolute;
@@ -2152,6 +2156,10 @@ textarea.form-control {
   margin-top: 0.25rem;
   font-size: 80%;
   color: #e74a3b;
+}
+
+hr.divider{
+  border-bottom: 5px solid #e3e6f0;
 }
 
 .invalid-tooltip {
@@ -7732,6 +7740,14 @@ button.bg-dark:focus {
 .mb-4,
 .my-4 {
   margin-bottom: 1.5rem !important;
+}
+
+select{
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }
 
 .ml-4,

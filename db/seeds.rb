@@ -8,3 +8,4 @@
 
 User.create(email:'admin@admin.com', username:'admin', password:'password', role:100, name:'admin')
 
+30.times { |i| Kolom.create(nama: i+1) }

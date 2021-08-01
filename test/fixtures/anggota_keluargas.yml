@@ -3,9 +3,11 @@
 # Table name: anggota_keluargas
 #
 #  id                :bigint           not null, primary key
+#  baptis            :integer
 #  jenis_kelamin     :integer
 #  nama              :string
 #  nik               :string
+#  sidi              :integer
 #  status_hubungan   :integer
 #  status_perkawinan :integer
 #  tanggal_lahir     :date
