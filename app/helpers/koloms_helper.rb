@@ -1,0 +1,2 @@
+module KolomsHelper
+end

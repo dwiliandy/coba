@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
+  resources :koloms
   resources :nama_keluargas
   resources :anggota_keluargas do
     collection do

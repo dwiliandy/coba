@@ -2,7 +2,7 @@ class NamaKeluargasController < ApplicationController
   before_action :set_nama_keluarga, except: [:index, :new, :create]
 
   def index
-    @nama_keluargas = NamaKeluarga.all.order(kolom_id: :asc)
+    @nama_keluargas = NamaKeluarga.all.order('kolom::integer asc')
     respond_to do |format|
       format.xlsx {
         response.headers[
@@ -56,7 +56,7 @@ class NamaKeluargasController < ApplicationController
 
   def nama_keluarga_params
     params.require(:nama_keluarga).permit(
-      :nama, :nomor_kartu_keluarga, :kolom_id, 
+      :nama, :nomor_kartu_keluarga, :kolom, 
       anggota_keluargas_attributes: [
         :id, :nama, :jenis_kelamin, :nik, 
         :tanggal_lahir, :tempat_lahir, 

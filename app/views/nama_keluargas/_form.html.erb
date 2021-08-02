@@ -15,8 +15,8 @@
                 <%= f.input :nomor_kartu_keluarga %>
               </div>
               <div class="col-4">
-                <%= f.input :kolom_id, include_blank: false, :collection => Kolom.all,:label_method => :nama,
-                :value_method => :id,:label => "Kolom" ,:include_blank => false  %>
+                <%= f.input :kolom, include_blank: false, :collection => Kolom.all,:label_method => :nama,
+                :value_method => :nama,:label => "Kolom" ,:include_blank => false  %>
               </div>
               <div class="col-lg-12">
                <h6 class="m-0 font-weight-bold text-primary">Data Anggota Keluarga :</h6>

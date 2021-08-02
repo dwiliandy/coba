@@ -8,5 +8,4 @@
 #  updated_at :datetime         not null
 #
 class Kolom < ApplicationRecord
-  has_many :nama_keluargas, dependent: :delete_all
 end

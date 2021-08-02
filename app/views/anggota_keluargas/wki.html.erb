@@ -35,11 +35,12 @@
                   <td><%=anggota.nama.humanize%></td>
                   <td><%=anggota.umur%> Tahun</td>
                   <td><%=anggota.nama_keluarga.nama%></td>
-                  <td><%=anggota.nama_keluarga.kolom.nama%></td>
+                  <td><%=anggota.nama_keluarga.kolom%></td>
                   
                 </tbody>
               <%end%>
           </table>
+            <%== render partial: 'shared/bootstrap_nav', locals: {pagy: @pagy} %>
         </div>
       </div>
     </div>
