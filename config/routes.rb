@@ -13,6 +13,11 @@ Rails.application.routes.draw do
       get 'pemuda'
       get 'ulang_tahun_minggu_ini'
       get 'ulang_tahun_minggu_depan'
+      get 'lahir_tahun_ini'
+      get 'meninggal_tahun_ini'
+    end
+    member do
+      patch 'set_meninggal'
     end
   end
 

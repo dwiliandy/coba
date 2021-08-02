@@ -2,7 +2,7 @@
     <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Jemaat yang Berulang Tahun Tanggal <%=(Date.today+7).beginning_of_week.strftime("%d") + " - " + (Date.today+7).end_of_week.strftime("%d %b %Y")%></h6>
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Kematian Tahun <%=Date.today.year%></h6>
     </div>
     <div class="card-body">
       <div class="row">
@@ -11,7 +11,7 @@
         <div class="col-lg-6">
         </div>
         <div class="col-lg-3">
-        <%=link_to ulang_tahun_minggu_depan_anggota_keluargas_path(format: :xlsx), class: "btn btn-sm btn-success float-right" do%>
+        <%=link_to meninggal_tahun_ini_anggota_keluargas_path(format: :xlsx), class: "btn btn-sm btn-success float-right" do%>
             <i class="fas fa-download"></i> Download Data Excel
           <%end%>
         </div>
@@ -24,7 +24,7 @@
               <tr>
                 <th>No</th>
                 <th>Nama Anggota</th>
-                <th>Umur Ke</th>
+                <th>Meninggal Tanggal</th>
                 <th>Keluarga</th>
                 <th>Kolom</th>
               </tr>
@@ -33,7 +33,7 @@
                 <tbody>
                   <td><%=index+1%></td>
                   <td><%=anggota.nama.humanize%></td>
-                  <td><%=anggota.umur + 1%> Tahun</td>
+                  <td><%=anggota.tanggal_lahir.strftime("%d %b %Y")%></td>
                   <td><%=anggota.nama_keluarga.nama%></td>
                   <td><%=anggota.nama_keluarga.kolom%></td>
                   
@@ -45,5 +45,4 @@
       </div>
     </div>
   </div>
-
 </div>

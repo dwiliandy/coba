@@ -5,12 +5,14 @@
 #  id                :bigint           not null, primary key
 #  baptis            :integer
 #  jenis_kelamin     :integer
+#  meninggal         :boolean          default(FALSE)
 #  nama              :string
 #  nik               :string
 #  sidi              :integer
 #  status_hubungan   :integer
 #  status_perkawinan :integer
 #  tanggal_lahir     :date
+#  tanggal_meninggal :date
 #  tempat_lahir      :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

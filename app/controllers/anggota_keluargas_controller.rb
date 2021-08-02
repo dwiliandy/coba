@@ -1,8 +1,16 @@
 class AnggotaKeluargasController < ApplicationController
-
+  before_action :set_anggota_keluarga, only: [:set_meninggal]
   def index
-    @q = AnggotaKeluarga.all.includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc, nama_keluarga.id desc").ransack(params[:q])
+    @q = AnggotaKeluarga.where(meninggal: false).includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc, nama_keluarga.id desc").ransack(params[:q])
     @pagy, @anggota_keluargas = pagy(@q.result(distinct: false),items:20)
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename=Semua Anggota.xlsx"
+      }
+      format.html { render :index }
+    end
   end
 
   def pkb
@@ -66,8 +74,46 @@ class AnggotaKeluargasController < ApplicationController
           'Content-Disposition'
         ] = "attachment; filename=Ulang Tahun Minggu Depan.xlsx"
       }
-      format.html { render :ulang_tahun_minggu_ini }
+      format.html { render :ulang_tahun_minggu_depan }
     end
   end
+
+  def lahir_tahun_ini
+    @q = AnggotaKeluarga.lahir_tahun_ini.order("tanggal_lahir asc").ransack(params[:q])
+		@pagy, @anggota_keluargas = pagy(@q.result(distinct: false),items:20)
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename=Lahir Tahun Ini.xlsx"
+      }
+      format.html { render :lahir_tahun_ini }
+    end
+  end
+
+  def meninggal_tahun_ini
+    @q = AnggotaKeluarga.meninggal_tahun_ini.order("tanggal_meninggal asc").ransack(params[:q])
+		@pagy, @anggota_keluargas = pagy(@q.result(distinct: false),items:20)
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename=Meninggal Tahun Ini.xlsx"
+      }
+      format.html { render :meninggal_tahun_ini }
+    end
+  end
+
+  def set_meninggal
+    @anggota_keluarga.update(tanggal_meninggal: Date.today, meninggal: true)
+    if @anggota_keluarga.nama_keluarga.anggota_keluargas.pluck(:meninggal).exclude? false
+      @anggota_keluarga.nama_keluarga.update(active: false)
+    end
+     redirect_to anggota_keluargas_path
+   end
+
+   def set_anggota_keluarga
+    @anggota_keluarga = AnggotaKeluarga.find(params[:id])
+   end
 
 end

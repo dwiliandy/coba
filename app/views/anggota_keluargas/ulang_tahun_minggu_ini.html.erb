@@ -2,7 +2,7 @@
     <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DJemaat yang Berulang Tahun Minggu Ini</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Jemaat yang Berulang Tahun Tanggal <%=Date.today.beginning_of_week.strftime("%d  ") + " - " + Date.today.end_of_week.strftime("%d %b %Y")%></h6>
     </div>
     <div class="card-body">
       <div class="row">

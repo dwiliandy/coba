@@ -5,12 +5,14 @@
 #  id                :bigint           not null, primary key
 #  baptis            :integer
 #  jenis_kelamin     :integer
+#  meninggal         :boolean          default(FALSE)
 #  nama              :string
 #  nik               :string
 #  sidi              :integer
 #  status_hubungan   :integer
 #  status_perkawinan :integer
 #  tanggal_lahir     :date
+#  tanggal_meninggal :date
 #  tempat_lahir      :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
@@ -32,11 +34,14 @@ class AnggotaKeluarga < ApplicationRecord
   
   
   #Scope Kategorial
-  scope :pkb, ->{where('jenis_kelamin = ? and status_perkawinan != ?',1,2)}
-  scope :wki, ->{where('jenis_kelamin = ? and status_perkawinan != ?',2,2)}
-  scope :pemuda, ->{where("status_perkawinan = ? and date_part('year', age(tanggal_lahir)) >= ? AND date_part('year', age(tanggal_lahir)) <= ?",2,17,35)}
+  scope :pkb, ->{where('jenis_kelamin = ? and status_perkawinan != ? and meninggal = ?',1,2,false)}
+  scope :wki, ->{where('jenis_kelamin = ? and status_perkawinan != ? and meninggal = ?',2,2,false)}
+  scope :pemuda, ->{where("status_perkawinan = ? and date_part('year', age(tanggal_lahir)) >= ? AND date_part('year', age(tanggal_lahir)) <= ?  and meninggal = ?",2,17,35,false)}
   
-  scope :ulang_tahun, ->(mulai_bulan, selesai_bulan, mulai_tanggal, selesai_tanggal){where("EXTRACT(month FROM tanggal_lahir) >= ? AND EXTRACT(month FROM tanggal_lahir) <= ? AND EXTRACT(day FROM tanggal_lahir) >= ? AND EXTRACT(day FROM tanggal_lahir) <= ?",mulai_bulan,selesai_bulan,mulai_tanggal,selesai_tanggal )}
+  #Scope Ulang Tahun
+  scope :ulang_tahun, ->(mulai_bulan, selesai_bulan, mulai_tanggal, selesai_tanggal){where("EXTRACT(month FROM tanggal_lahir) >= ? AND EXTRACT(month FROM tanggal_lahir) <= ? AND EXTRACT(day FROM tanggal_lahir) >= ? AND EXTRACT(day FROM tanggal_lahir) <= ?  and meninggal = ?",mulai_bulan,selesai_bulan,mulai_tanggal,selesai_tanggal,false )}
+  scope :lahir_tahun_ini, ->{where("tanggal_lahir >= ? AND tanggal_lahir <= ?",Date.today.beginning_of_year, Date.today.end_of_year)}
+  scope :meninggal_tahun_ini, ->{where("tanggal_meninggal >= ? AND tanggal_meninggal <= ? AND meninggal = ?",Date.today.beginning_of_year, Date.today.end_of_year,true)}
 
   BAPTIS_SIDI_OPTIONS = [
     ["Sudah", 1],

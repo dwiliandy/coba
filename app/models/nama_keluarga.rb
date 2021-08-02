@@ -3,6 +3,7 @@
 # Table name: nama_keluargas
 #
 #  id                   :bigint           not null, primary key
+#  active               :boolean          default(TRUE)
 #  kolom                :string
 #  nama                 :string
 #  nomor_kartu_keluarga :string

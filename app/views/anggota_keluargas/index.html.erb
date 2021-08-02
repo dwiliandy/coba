@@ -6,9 +6,17 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-lg-3">
-        </div>
-        <div class="col-lg-6">
+        <div class="col-lg-9">
+        <%= search_form_for @q, url: anggota_keluargas_path do |f| %>               
+          <div class="row">
+            <div class="col-6">
+              <%= f.search_field :nama_cont, placeholder: "Cari Berdasarkan Nama", class: 'form-control admin-search' %>
+            </div>
+            <div class="col-3">
+              <%= f.button :Search, class: "btn btn-sm btn-success"%>     
+            </div>  
+          </div>
+        <%end%>
         </div>
         <div class="col-lg-3">
         <%=link_to pkb_anggota_keluargas_path(format: :xlsx), class: "btn btn-sm btn-success float-right" do%>
@@ -27,6 +35,7 @@
                 <th>Umur</th>
                 <th>Keluarga</th>
                 <th>Kolom</th>
+                <th></th>
               </tr>
             </thead>
               <%@anggota_keluargas.each_with_index do |anggota,index|%>
@@ -36,7 +45,15 @@
                   <td><%=anggota.umur%> Tahun</td>
                   <td><%=anggota.nama_keluarga.nama%></td>
                   <td><%=anggota.nama_keluarga.kolom%></td>
-                  
+                  <td>
+                   <div class="row">
+                      <div class="col-lg-2">
+                        <%=link_to set_meninggal_anggota_keluarga_path(anggota.id), class: "btn btn-sm btn-danger", method: :patch, data: { confirm: "Anda Yakin ?"} do%>
+                          Meninggal?
+                        <%end%>
+                      </div>  
+                    </div>
+                  </td>
                 </tbody>
               <%end%>
           </table>
