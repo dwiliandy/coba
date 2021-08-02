@@ -8,7 +8,7 @@
         <%= f.input :nik %>
       </div>
       <div class="col-lg-4">
-        <%= f.input :jenis_kelamin, include_blank: false, collection: AnggotaKeluarga.jenis_kelamins.keys.map { |w| [w.humanize, w] }%>
+        <%= f.input :jenis_kelamin, include_blank: "Pilih :", collection: AnggotaKeluarga.jenis_kelamins.keys.map { |w| [w.humanize, w] }%>
       </div>
     </div>
     <div class="row">
@@ -21,18 +21,18 @@
     </div>
     <div class="row">
       <div class="col-lg-6">
-        <%= f.input :status_hubungan, include_blank: false, collection: AnggotaKeluarga.status_hubungans.keys.map { |w| [w.humanize, w] }%>
+        <%= f.input :status_hubungan, include_blank: "Pilih :", collection: AnggotaKeluarga.status_hubungans.keys.map { |w| [w.humanize, w] }%>
       </div>
       <div class="col-lg-6">
-        <%= f.input :status_perkawinan, include_blank: false, collection: AnggotaKeluarga.status_perkawinans.keys.map { |w| [w.humanize, w] }%>
+        <%= f.input :status_perkawinan, include_blank: "Pilih :", collection: AnggotaKeluarga.status_perkawinans.keys.map { |w| [w.humanize, w] }%>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-5">
-        <%= f.input :baptis, include_blank: false, collection: AnggotaKeluarga::BAPTIS_SIDI_OPTIONS%>
+        <%= f.input :baptis, include_blank: "Pilih :", collection: AnggotaKeluarga::BAPTIS_SIDI_OPTIONS%>
       </div>
       <div class="col-lg-5">
-        <%= f.input :sidi, include_blank: false, collection: AnggotaKeluarga::BAPTIS_SIDI_OPTIONS%>
+        <%= f.input :sidi, include_blank: "Pilih :", collection: AnggotaKeluarga::BAPTIS_SIDI_OPTIONS%>
       </div>
       <div class="col-lg-2">
         <%= link_to_remove_association f , class: "btn btn-sm btn-danger remove-association" do %>

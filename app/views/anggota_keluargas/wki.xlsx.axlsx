@@ -4,7 +4,7 @@ wb.add_worksheet(name: "Anggota Wanita Kaum Ibu") do |sheet|
   # Create the header row
   sheet.add_row ["No", "Nama Anggota", "Nama Keluarga","Kolom"]
   # Create entries for each item
-  AnggotaKeluarga.wki.includes(:nama_keluarga).order("nama_keluarga.kolom_id asc").each_with_index do |anggota,index|
-    sheet.add_row [index+1, anggota.nama, anggota.nama_keluarga.nama, anggota.nama_keluarga.kolom.nama]
+  AnggotaKeluarga.wki.includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc").each_with_index do |anggota,index|
+    sheet.add_row [index+1, anggota.nama, anggota.nama_keluarga.nama, anggota.nama_keluarga.kolom]
   end
 end

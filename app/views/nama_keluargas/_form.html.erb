@@ -8,15 +8,15 @@
         <div class="col-12">
           <%= simple_form_for @nama_keluarga do |f| %>
             <div class="row">
-              <div class="col-4">
+              <div class="col-lg-4 col-md-12">
                 <%= f.input :nama %>
               </div>
-              <div class="col-4">
+              <div class="col-lg-4 col-md-12">
                 <%= f.input :nomor_kartu_keluarga %>
               </div>
-              <div class="col-4">
-                <%= f.input :kolom, include_blank: false, :collection => Kolom.all,:label_method => :nama,
-                :value_method => :nama,:label => "Kolom" ,:include_blank => false  %>
+              <div class="col-lg-4 col-md-12">
+                <%= f.input :kolom, include_blank: "Pilih :", :collection => Kolom.all,:label_method => :nama,
+                :value_method => :nama,:label => "Kolom"  %>
               </div>
               <div class="col-lg-12">
                <h6 class="m-0 font-weight-bold text-primary">Data Anggota Keluarga :</h6>

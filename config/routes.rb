@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get 'pkb'
       get 'wki'
       get 'pemuda'
+      get 'ulang_tahun_minggu_ini'
+      get 'ulang_tahun_minggu_depan'
     end
   end
 

@@ -29,10 +29,14 @@ class AnggotaKeluarga < ApplicationRecord
   enum jenis_kelamin: {pria: 1, wanita: 2}
   enum status_hubungan: {kepala_keluarga: 1, istri: 2, anak: 3, orang_tua: 4}
   enum status_perkawinan: {kawin: 1, belum_kawin: 2, cerai_hidup: 3, cerai_mati: 4}
-
+  
+  
+  #Scope Kategorial
   scope :pkb, ->{where('jenis_kelamin = ? and status_perkawinan != ?',1,2)}
   scope :wki, ->{where('jenis_kelamin = ? and status_perkawinan != ?',2,2)}
   scope :pemuda, ->{where("status_perkawinan = ? and date_part('year', age(tanggal_lahir)) >= ? AND date_part('year', age(tanggal_lahir)) <= ?",2,17,35)}
+  
+  scope :ulang_tahun, ->(mulai_bulan, selesai_bulan, mulai_tanggal, selesai_tanggal){where("EXTRACT(month FROM tanggal_lahir) >= ? AND EXTRACT(month FROM tanggal_lahir) <= ? AND EXTRACT(day FROM tanggal_lahir) >= ? AND EXTRACT(day FROM tanggal_lahir) <= ?",mulai_bulan,selesai_bulan,mulai_tanggal,selesai_tanggal )}
 
   BAPTIS_SIDI_OPTIONS = [
     ["Sudah", 1],
@@ -52,5 +56,4 @@ class AnggotaKeluarga < ApplicationRecord
     now = Date.today
     now.year - tanggal_lahir.year - ((now.month > tanggal_lahir.month || (now.month == tanggal_lahir.month && now.day >= tanggal_lahir.day)) ? 0 : 1)
   end
-
 end
