@@ -12,6 +12,12 @@
 #
 class NamaKeluarga < ApplicationRecord
   has_many :anggota_keluargas
+  
+  #Validasi
+  validates :nama, :presence => true,
+    :on => [:update, :create]
+  validates :kolom, :presence => true,
+    :on => [:update, :create]
   accepts_nested_attributes_for :anggota_keluargas, :reject_if => :all_blank, allow_destroy: true
 
 

@@ -28,6 +28,26 @@
 #
 class AnggotaKeluarga < ApplicationRecord
   belongs_to :nama_keluarga
+
+  #validate
+  validates :nama, :presence => true,
+    :on => [:update, :create]
+  validates :jenis_kelamin, :presence => true,
+    :on => [:update, :create]
+  validates :tempat_lahir, :presence => true,
+    :on => [:update, :create]
+  validates :tanggal_lahir, :presence => true,
+    :on => [:update, :create]
+  validates :status_perkawinan, :presence => true,
+    :on => [:update, :create]
+  validates :status_hubungan, :presence => true,
+    :on => [:update, :create]
+  validates :baptis, :presence => true,
+    :on => [:update, :create]
+  validates :sidi, :presence => true,
+    :on => [:update, :create]
+
+
   enum jenis_kelamin: {pria: 1, wanita: 2}
   enum status_hubungan: {kepala_keluarga: 1, istri: 2, anak: 3, orang_tua: 4}
   enum status_perkawinan: {kawin: 1, belum_kawin: 2, cerai_hidup: 3, cerai_mati: 4}
