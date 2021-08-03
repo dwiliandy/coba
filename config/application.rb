@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Coba
   class Application < Rails::Application
+    config.i18n.default_locale = :id
+    I18n.available_locales = [:id, :en]
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.exceptions_app = self.routes

@@ -109,7 +109,7 @@ class AnggotaKeluargasController < ApplicationController
     if @anggota_keluarga.nama_keluarga.anggota_keluargas.pluck(:meninggal).exclude? false
       @anggota_keluarga.nama_keluarga.update(active: false)
     end
-     redirect_to anggota_keluargas_path
+     redirect_to anggota_keluargas_path, notice: 'Data Anggota berhasil Diupdate.' 
    end
 
    def set_anggota_keluarga
