@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     devise_scope :user do
       root to: "devise/sessions#new"
     end
-
+    resources :users, only: [:edit,:update]
     resources :koloms
     resources :nama_keluargas
     resources :anggota_keluargas do

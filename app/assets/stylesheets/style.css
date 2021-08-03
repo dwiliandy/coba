@@ -1,0 +1,6 @@
+.bg-sion{
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(86,31,115,0.5)),
+  url("sion.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
