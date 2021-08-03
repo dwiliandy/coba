@@ -6,9 +6,17 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-lg-3">
-        </div>
-        <div class="col-lg-6">
+        <div class="col-lg-9">
+        <%= search_form_for @q, url: wki_anggota_keluargas_path do |f| %>               
+          <div class="row">
+            <div class="col-6">
+              <%= f.search_field :nama_cont, placeholder: "Cari Berdasarkan Nama", class: 'form-control admin-search' %>
+            </div>
+            <div class="col-3">
+              <%= f.button :Search, class: "btn btn-sm btn-success"%>     
+            </div>  
+          </div>
+        <%end%>
         </div>
         <div class="col-lg-3">
         <%=link_to wki_anggota_keluargas_path(format: :xlsx), class: "btn btn-sm btn-success float-right" do%>

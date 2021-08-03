@@ -2,7 +2,8 @@ class NamaKeluargasController < ApplicationController
   before_action :set_nama_keluarga, except: [:index, :new, :create]
 
   def index
-    @nama_keluargas = NamaKeluarga.where(active:true).order('kolom::integer asc')
+    @q = NamaKeluarga.where(active:true).order('kolom::integer asc').ransack(params[:q])
+		@pagy, @nama_keluargas = pagy(@q.result(distinct: false),items:20) 
     respond_to do |format|
       format.xlsx {
         response.headers[
