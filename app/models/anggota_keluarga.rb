@@ -65,7 +65,7 @@ class AnggotaKeluarga < ApplicationRecord
 
   BAPTIS_SIDI_OPTIONS = [
     ["Sudah", 1],
-    ["Belum", 2],
+    ["Belum", 2]
   ]
 
   def baptis_sidi_list
@@ -77,6 +77,7 @@ class AnggotaKeluarga < ApplicationRecord
     end
   end
 
+  #Mencari Umur
   def umur
     now = Date.today
     now.year - tanggal_lahir.year - ((now.month > tanggal_lahir.month || (now.month == tanggal_lahir.month && now.day >= tanggal_lahir.day)) ? 0 : 1)

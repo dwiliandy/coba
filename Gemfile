@@ -68,4 +68,5 @@ gem 'axlsx_rails'
 gem 'pagy'
 gem 'rails-i18n'
 gem 'ransack'
+gem "roo", "~> 2.8.0"
 

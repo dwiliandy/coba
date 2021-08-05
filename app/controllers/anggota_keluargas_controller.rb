@@ -104,6 +104,8 @@ class AnggotaKeluargasController < ApplicationController
     end
   end
 
+  private
+
   def set_meninggal
     @anggota_keluarga.update(tanggal_meninggal: Date.today, meninggal: true)
     if @anggota_keluarga.nama_keluarga.anggota_keluargas.pluck(:meninggal).exclude? false

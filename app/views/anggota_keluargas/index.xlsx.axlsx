@@ -1,10 +1,41 @@
 wb = xlsx_package.workbook
 
-wb.add_worksheet(name: "Anggota Pemuda") do |sheet|
+wb.add_worksheet(name: "Semua Anggota") do |sheet|
   # Create the header row
-  sheet.add_row ["No", "Nama Anggota", "Nama Keluarga","Kolom"]
+  sheet.add_row ["Nama Keluarga", 
+  "Nomor Kartu Keluarga",
+  "Kolom", 
+  "Nama Anggota",
+  "Nik",
+  "Jenis Kelamin",
+  "Tempat Lahir",
+  "Tanggal Lahir",
+  "Status Hubungan",
+  "Status Perkawinan",
+  "Baptis",
+  "Sidi"]
   # Create entries for each item
-  AnggotaKeluarga.all.includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc, nama_keluarga.id desc").each_with_index do |anggota,index|
-    sheet.add_row [index+1, anggota.nama, anggota.nama_keluarga.nama, anggota.nama_keluarga.kolom]
+  AnggotaKeluarga.where(meninggal: false).includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc, nama_keluarga.id desc").each do |anggota|
+    sheet.add_row [anggota.nama_keluarga.nama.split("_").map(&:capitalize).join(" "),
+    anggota.nama_keluarga.nomor_kartu_keluarga,
+    anggota.nama_keluarga.kolom, 
+    anggota.nama,
+    anggota.nik,
+    anggota.jenis_kelamin.humanize,
+    anggota.tempat_lahir,
+    anggota.tanggal_lahir.strftime("%d/%m/%Y"),
+    anggota.status_hubungan.split("_").map(&:capitalize).join(" "),
+    anggota.status_perkawinan.split("_").map(&:capitalize).join(" "),
+    if anggota.baptis == 1
+      "Sudah"
+    else
+      "Belum"
+    end,
+    if anggota.sidi == 1
+      "Sudah"
+    else
+      "Belum"
+    end
+    ]
   end
 end

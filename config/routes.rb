@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'anggota_keluargas_imports/new'
+  get 'anggota_keluargas_imports/create'
     devise_for :users 
     devise_scope :user do
       root to: "devise/sessions#new"
@@ -20,6 +22,9 @@ Rails.application.routes.draw do
         patch 'set_meninggal'
       end
     end
+
+    resources :anggota_keluargas_imports, only: [:new, :create]
+
 
     match "/404", to: "errors#not_found", via: :all
     match "/500", to: "errors#internal_server_error", via: :all

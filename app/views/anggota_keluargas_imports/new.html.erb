@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Import Data dari Excel</h6>
+    </div>
+    <div class="card-body">
+
+        <p>
+        Catatan: Gunakan Template Dari Download Anggota Keluarga
+        </p>
+
+        <h3 style ="color: red">Perhatikan!!</h3>
+        <h4></h4>
+        <ul style ="color: red">
+          <li>Jenis Kelamin Diisi dengan : Pria atau Wanita</li>
+          <li>Status Hubungan Diisi dengan : Kepala Keluarga, Istri, Anak atau Orang Tua</li>
+          <li>Status Perkawinan Disi dengan : Kawin, Belum Kawin, Cerai Hidup atau Cerai Mati</li>
+          <li>Sidi dan Status Diisi dengan : Sudah atau Belum</li>
+          <li>Perhatikan format pengisian tanggal pada excel</li>
+        </ul>
+
+        <h5>Pilih File</h5>
+        <%= form_for @anggota_keluargas_import do |f| %>
+          <% if @anggota_keluargas_import.errors.any? %>
+            <%= pluralize(@anggota_keluargas_import.errors.count, "error") %> dari file yang diupload. Tolong ubah data pada excel dan coba lagi.
+            <ul>
+              <% @anggota_keluargas_import.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <%= f.file_field :file %>
+          <%= f.submit "Import File" %>
+        <% end %>
+
+    </div>
+  </div>
+</div>
