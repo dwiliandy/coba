@@ -57,6 +57,8 @@ class AnggotaKeluarga < ApplicationRecord
   scope :pkb, ->{where('jenis_kelamin = ? and status_perkawinan != ? and meninggal = ?',1,2,false)}
   scope :wki, ->{where('jenis_kelamin = ? and status_perkawinan != ? and meninggal = ?',2,2,false)}
   scope :pemuda, ->{where("status_perkawinan = ? and date_part('year', age(tanggal_lahir)) >= ? AND date_part('year', age(tanggal_lahir)) <= ?  and meninggal = ?",2,17,35,false)}
+  scope :remaja, ->{where("status_perkawinan = ? and date_part('year', age(tanggal_lahir)) >= ? AND date_part('year', age(tanggal_lahir)) <= ?  and meninggal = ?",2,12,17,false)}
+  scope :asm, ->{where("status_perkawinan = ? and date_part('year', age(tanggal_lahir)) >= ? AND date_part('year', age(tanggal_lahir)) <= ?  and meninggal = ?",2,0,11,false)}
   
   #Scope Ulang Tahun
   scope :ulang_tahun, ->(mulai_bulan, selesai_bulan, mulai_tanggal, selesai_tanggal){where("EXTRACT(month FROM tanggal_lahir) >= ? AND EXTRACT(month FROM tanggal_lahir) <= ? AND EXTRACT(day FROM tanggal_lahir) >= ? AND EXTRACT(day FROM tanggal_lahir) <= ?  and meninggal = ?",mulai_bulan,selesai_bulan,mulai_tanggal,selesai_tanggal,false )}

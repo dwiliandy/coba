@@ -29,18 +29,34 @@ class AnggotaKeluargasImport
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      nama_keluarga = NamaKeluarga.find_by(nomor_kartu_keluarga: row['Nomor Kartu Keluarga']) || NamaKeluarga.new
-      nama_keluarga.nama = row['Nama Keluarga']
-      nama_keluarga.nomor_kartu_keluarga = row['Nomor Kartu Keluarga']
-      nama_keluarga.kolom = row['Kolom']
-      nama_keluarga.save
-      anggota = nama_keluarga.anggota_keluargas.find_by(nik: row['Nik']) || nama_keluarga.anggota_keluargas.build
-      anggota.nama = row['Nama Anggota']
-      anggota.nik = row['Nik']
+      anggota = AnggotaKeluarga.find_by(nik: row['Nik'].to_s) || AnggotaKeluarga.new
+      if anggota.nama_keluarga.present?
+        if row["Nomor Kartu Keluarga"].to_s.eql? anggota.nama_keluarga.nomor_kartu_keluarga
+          anggota.nama_keluarga.nama = row['Nama Keluarga']
+          anggota.nama_keluarga.nomor_kartu_keluarga = row['Nomor Kartu Keluarga'].to_s
+          anggota.nama_keluarga.kolom = row['Nama Kolom']
+        else
+          anggota.nama_keluarga = NamaKeluarga.new
+          anggota.nama_keluarga.nama = row['Nama Keluarga']
+          anggota.nama_keluarga.nomor_kartu_keluarga = row['Nomor Kartu Keluarga'].to_s
+          anggota.nama_keluarga.kolom = row['Kolom']
+          anggota.nama_keluarga.save
+        end
+      else
+        anggota.nama_keluarga = NamaKeluarga.find_by(nomor_kartu_keluarga: row['Nomor Kartu Keluarga'].to_s) || NamaKeluarga.new
+        anggota.nama_keluarga.nama = row['Nama Keluarga']
+        anggota.nama_keluarga.nomor_kartu_keluarga = row['Nomor Kartu Keluarga'].to_s
+        anggota.nama_keluarga.kolom = row['Kolom']
+        anggota.nama_keluarga.save
+      end
+        anggota.nama = row['Nama Anggota']
+        anggota.nik = row['Nik'].to_s
       if row['Jenis Kelamin'].eql? "Pria"
         anggota.jenis_kelamin = 1
-      else
+      elsif row['Jenis Kelamin'].eql? "Wanita"
         anggota.jenis_kelamin = 2
+      else
+        anggota.jenis_kelamin = nil
       end
       anggota.tempat_lahir = row['Tempat Lahir']
       anggota.tanggal_lahir = row['Tanggal Lahir']
@@ -52,6 +68,8 @@ class AnggotaKeluargasImport
         anggota.status_hubungan = 3
       elsif row['Status Hubungan'].eql?'Orang Tua'
         anggota.status_hubungan = 4
+      else
+        anggota.status_hubungan = nil
       end
       if row['Status Perkawinan'].eql? 'Kawin'
         anggota.status_perkawinan = 1
@@ -61,16 +79,22 @@ class AnggotaKeluargasImport
         anggota.status_perkawinan = 3
       elsif row['Status Perkawinan'].eql? 'Cerai Mati'
         anggota.status_perkawinan = 4
+      else
+        anggota.status_perkawinan = nil
       end
       if row['Baptis'].eql? 'Sudah'
         anggota.baptis = 1
-      else row['Baptis'].eql? 'Orang Tua'
+      elsif row['Baptis'].eql? 'Belum'
         anggota.baptis = 2
+      else
+        anggota.baptis = nil
       end
       if row['Sidi'].eql? 'Sudah'
         anggota.sidi = 1
-      else row['Sidi'].eql? 'Orang Tua'
+      elsif row['Sidi'].eql? 'Belum'
         anggota.sidi = 2
+      else
+        anggota.sidi = nil
       end
       anggota
     end
