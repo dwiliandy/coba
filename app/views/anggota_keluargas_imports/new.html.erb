@@ -15,9 +15,9 @@
         <ul style ="color: red">
           <li>Jenis Kelamin Diisi dengan : Pria atau Wanita</li>
           <li>Status Hubungan Diisi dengan : Kepala Keluarga, Istri, Anak atau Orang Tua</li>
-          <li>Status Perkawinan Disi dengan : Kawin, Belum Kawin, Cerai Hidup atau Cerai Mati</li>
+          <li>Status Perkawinan Diisi dengan : Kawin, Belum Kawin, Cerai Hidup atau Cerai Mati</li>
           <li>Sidi dan Status Diisi dengan : Sudah atau Belum</li>
-          <li>Perhatikan format pengisian tanggal pada excel</li>
+          <li>Perhatikan format pengisian tanggal pada excel sudah dalam format dd/mm/YYYY</li>
         </ul>
 
         <h5>Pilih File</h5>
@@ -30,8 +30,11 @@
               <% end %>
             </ul>
           <% end %>
-          <%= f.file_field :file %>
-          <%= f.submit "Import File" %>
+          <div class="button-wrap">
+            <%= f.file_field :file%>
+          </div>
+          <br>
+          <%= f.submit "Import File", class: "btn btn-info" %>
         <% end %>
 
     </div>
