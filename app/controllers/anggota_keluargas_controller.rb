@@ -13,6 +13,17 @@ class AnggotaKeluargasController < ApplicationController
     end
   end
 
+  def template
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename=Template Import Anggota.xlsx"
+      }
+      format.html { render :index }
+    end
+  end
+
   def pkb
     @q = AnggotaKeluarga.pkb.includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc").ransack(params[:q])
 		@pagy, @anggota_keluargas = pagy(@q.result(distinct: false),items:20)

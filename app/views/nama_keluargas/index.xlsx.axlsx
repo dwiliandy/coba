@@ -1,10 +1,23 @@
 wb = xlsx_package.workbook
 
-wb.add_worksheet(name: "Nama_Keluargas") do |sheet|
-  # Create the header row
-  sheet.add_row ["No", "Nama Keluarga", "Kolom"]
-  # Create entries for each item
+wb.styles do |style|
+  project_heading = style.add_style(b: true, sz: 14)
+  heading = style.add_style(b: true)
+
+  wb.add_worksheet(name: "Nama_Keluargas") do |sheet|
+
   @nama_keluargas.each_with_index do |nama,index|
-    sheet.add_row [index+1, nama.nama, nama.kolom.nama]
+    #Tambah Nama Keluarga
+    sheet.add_row ["Data Keluarga"], style: project_heading
+    # Tambah Tanggal di Download
+    sheet.add_row ["Diunduh Tanggal", Time.now.strftime("%d %B %Y")]
+    #Tambah Row Kosong
+    sheet.add_row []
+
+    #Buat header
+    sheet.add_row ["Nama Keluarga", "Kolom"], style: heading
+    #Buat Entry
+    sheet.add_row [nama.nama, nama.kolom]
+  end
   end
 end

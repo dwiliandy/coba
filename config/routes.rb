@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'anggota_keluargas_imports/new'
-  get 'anggota_keluargas_imports/create'
     devise_for :users 
     devise_scope :user do
       root to: "devise/sessions#new"
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
         get 'ulang_tahun_minggu_depan'
         get 'lahir_tahun_ini'
         get 'meninggal_tahun_ini'
+        get 'template'
       end
       member do
         patch 'set_meninggal'

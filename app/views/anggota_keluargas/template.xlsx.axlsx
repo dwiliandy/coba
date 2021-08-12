@@ -1,0 +1,21 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+  project_heading = style.add_style(b: true, sz: 14)
+  heading = style.add_style(b: true)
+
+  wb.add_worksheet(name: "Semua Anggota") do |sheet|
+    # Create the header row
+    sheet.add_row ["Nama Keluarga", 
+    "Nomor Kartu Keluarga",
+    "Kolom", 
+    "Nama Anggota",
+    "Nik",
+    "Jenis Kelamin",
+    "Tempat Lahir",
+    "Tanggal Lahir",
+    "Status Hubungan",
+    "Status Perkawinan",
+    "Baptis",
+    "Sidi"], style: heading
+  end
+end

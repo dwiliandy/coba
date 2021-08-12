@@ -1,41 +1,55 @@
 wb = xlsx_package.workbook
 
-wb.add_worksheet(name: "Semua Anggota") do |sheet|
-  # Create the header row
-  sheet.add_row ["Nama Keluarga", 
-  "Nomor Kartu Keluarga",
-  "Kolom", 
-  "Nama Anggota",
-  "Nik",
-  "Jenis Kelamin",
-  "Tempat Lahir",
-  "Tanggal Lahir",
-  "Status Hubungan",
-  "Status Perkawinan",
-  "Baptis",
-  "Sidi"]
-  # Create entries for each item
-  AnggotaKeluarga.where(meninggal: false).includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc, nama_keluarga.id desc").each do |anggota|
-    sheet.add_row [anggota.nama_keluarga.nama.split("_").map(&:capitalize).join(" "),
-    anggota.nama_keluarga.nomor_kartu_keluarga,
-    anggota.nama_keluarga.kolom, 
-    anggota.nama,
-    anggota.nik,
-    anggota.jenis_kelamin.humanize,
-    anggota.tempat_lahir,
-    anggota.tanggal_lahir.strftime("%d/%m/%Y"),
-    anggota.status_hubungan.split("_").map(&:capitalize).join(" "),
-    anggota.status_perkawinan.split("_").map(&:capitalize).join(" "),
-    if anggota.baptis == 1
-      "Sudah"
-    else
-      "Belum"
-    end,
-    if anggota.sidi == 1
-      "Sudah"
-    else
-      "Belum"
+wb.styles do |style|
+  project_heading = style.add_style(b: true, sz: 16)
+  heading = style.add_style(b: true)
+
+
+  wb.add_worksheet(name: "Semua Anggota") do |sheet|
+
+    # Add a title row
+    sheet.add_row ["Data Anggota Jemaat"], style: project_heading
+    # Add the date this was downloaded
+    sheet.add_row ["Downloaded at", Time.now.strftime("%d %B %Y")]
+    # Add a blank row
+    sheet.add_row []
+
+    # Create the header row
+    sheet.add_row ["Nama Keluarga", 
+    "Nomor Kartu Keluarga",
+    "Kolom", 
+    "Nama Anggota",
+    "Nik",
+    "Jenis Kelamin",
+    "Tempat Lahir",
+    "Tanggal Lahir",
+    "Status Hubungan",
+    "Status Perkawinan",
+    "Baptis",
+    "Sidi"], style: heading
+    # Create entries for each item
+    AnggotaKeluarga.where(meninggal: false).includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc, nama_keluarga.id desc").each do |anggota|
+      sheet.add_row [anggota.nama_keluarga.nama.split("_").map(&:capitalize).join(" "),
+      anggota.nama_keluarga.nomor_kartu_keluarga,
+      anggota.nama_keluarga.kolom, 
+      anggota.nama,
+      anggota.nik,
+      anggota.jenis_kelamin.humanize,
+      anggota.tempat_lahir,
+      anggota.tanggal_lahir.strftime("%d/%m/%Y"),
+      anggota.status_hubungan.split("_").map(&:capitalize).join(" "),
+      anggota.status_perkawinan.split("_").map(&:capitalize).join(" "),
+      if anggota.baptis == 1
+        "Sudah"
+      else
+        "Belum"
+      end,
+      if anggota.sidi == 1
+        "Sudah"
+      else
+        "Belum"
+      end
+      ]
     end
-    ]
   end
 end
