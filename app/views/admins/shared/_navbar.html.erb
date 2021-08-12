@@ -8,43 +8,43 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item active">
-      <%=link_to dashboard_path, class: "nav-link" do%>
+      <%=link_to admins_pages_index_path, class: "nav-link" do%>
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
       <%end%>
     </li>
 
     <li class="nav-item active">
-      <%=link_to nama_keluargas_path, class: "nav-link" do%>
+      <%=link_to admins_nama_keluargas_path, class: "nav-link" do%>
             <i class="fas fa-users"></i>
-            <span>Nama Keluarga</span></a>
+            <span>Data Nama Keluarga</span></a>
+      <%end%>
+    </li>
+
+    <li class="nav-item active">
+      <%=link_to admins_anggota_keluargas_path, class: "nav-link" do%>
+            <i class="fas fa-user"></i>
+            <span>Data Anggota Jemaat</span></a>
       <%end%>
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-user"></i>
-            <span>Daftar Anggota</span>
+            <span>Data BIPRA</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<%=anggota_keluargas_path%>">Semua Data</a>
-                <a class="collapse-item" href="<%=pkb_anggota_keluargas_path%>">PKB</a>
-                <a class="collapse-item" href="<%=wki_anggota_keluargas_path%>">WKI</a>
-                <a class="collapse-item" href="<%=pemuda_anggota_keluargas_path%>">Pemuda</a>
-                <a class="collapse-item" href="<%=remaja_anggota_keluargas_path%>">Remaja</a>
-                <a class="collapse-item" href="<%=asm_anggota_keluargas_path%>">ASM</a>
+                <a class="collapse-item" href="<%=pkb_admins_anggota_keluargas_path%>">PKB</a>
+                <a class="collapse-item" href="<%=wki_admins_anggota_keluargas_path%>">WKI</a>
+                <a class="collapse-item" href="<%=pemuda_admins_anggota_keluargas_path%>">Pemuda</a>
+                <a class="collapse-item" href="<%=remaja_admins_anggota_keluargas_path%>">Remaja</a>
+                <a class="collapse-item" href="<%=asm_admins_anggota_keluargas_path%>">ASM</a>
             </div>
         </div>
     </li>
-    <li class="nav-item active">
-      <%=link_to koloms_path, class: "nav-link" do%>
-            <i class="fas fa-church"></i>
-            <span>Kolom</span></a>
-      <%end%>
-    </li>
-    <hr class="sidebar-divider">
-    <li class="nav-item">
+
+      <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
           aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-birthday-cake"></i> 
@@ -53,8 +53,8 @@
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
           data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<%=ulang_tahun_minggu_ini_anggota_keluargas_path%>">Minggu Ini</a>
-              <a class="collapse-item" href="<%=ulang_tahun_minggu_depan_anggota_keluargas_path%>">Minggu Depan</a>
+              <a class="collapse-item" href="<%=ulang_tahun_minggu_ini_admins_anggota_keluargas_path%>">Minggu Ini</a>
+              <a class="collapse-item" href="<%=ulang_tahun_minggu_depan_admins_anggota_keluargas_path%>">Minggu Depan</a>
           </div>
       </div>  
   </li>
@@ -67,10 +67,17 @@
     </a>
     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<%=lahir_tahun_ini_anggota_keluargas_path%>">Kelahiran Tahun Ini</a>
-            <a class="collapse-item" href="<%=meninggal_tahun_ini_anggota_keluargas_path%>">Kematian Tahun Ini</a>
+            <a class="collapse-item" href="<%=lahir_tahun_ini_admins_anggota_keluargas_path%>">Kelahiran Tahun Ini</a>
+            <a class="collapse-item" href="<%=meninggal_tahun_ini_admins_anggota_keluargas_path%>">Kematian Tahun Ini</a>
         </div>
     </div>
-</li>
+  </li>
 
+  <hr class="sidebar-divider">
+  <li class="nav-item active">
+    <%=link_to admins_koloms_path, class: "nav-link" do%>
+          <i class="fas fa-church"></i>
+          <span>Kolom</span></a>
+    <%end%>
+  </li>
 </ul>

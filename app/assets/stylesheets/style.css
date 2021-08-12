@@ -4,3 +4,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.with-margin{
+  margin-bottom: 20px;
+}

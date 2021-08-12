@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Nama Keluarga</h6>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-3 col-md-12">
+          <%=link_to new_admins_nama_keluarga_path, class: "btn btn-success with-margin col-md-12" do%>
+            <i class="fas fa-plus"></i> Tambah Data Keluarga
+          <%end%>
+          <br>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <%= search_form_for @q, url: admins_nama_keluargas_path do |f| %>               
+            <div class="row">
+              <div class="col-9">
+                <%= f.search_field :nama_cont, placeholder: "Cari Nama", class: 'form-control admin-search col-12' %>
+              </div>            
+              <div class="col-3">
+                <%= f.button :Search, class: "btn btn-success col-lg-5 with-margin" do%>    
+                <i class="fas fa-search"></i>
+              <%end%>    
+              </div>  
+            </div>
+          <%end%>
+        </div>
+        <div class="col-lg-3 col-md-12">
+          <%=link_to admins_nama_keluargas_path(format: :xlsx), class: "btn btn-success with-margin col-md-12" do%>
+            <i class="fas fa-download"></i> Download Data Excel
+          <%end%>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Keluarga</th>
+                <th>Nomor Keluarga</th>
+                <th>Kolom</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+              <%@nama_keluargas.each_with_index do |nama,index|%>
+                <tbody>
+                  <td><%=index+1%></td>
+                  <td><%=nama.nama%></td>
+                  <td><%=nama.nomor_kartu_keluarga%></td>
+                  <td><%=nama.kolom%></td>
+                  <td>
+                  <div class="row">
+                  <div class="col-lg-2">
+                    <%=link_to edit_admins_nama_keluarga_path(nama), class: "btn btn-sm btn-success" do%>
+                      <i class="fas fa-edit"></i>
+                    <%end%>
+                  </div>
+                  <div class="col-lg-2">
+                    <%=link_to admins_nama_keluarga_path(nama), class: "btn btn-sm btn-primary" do%>
+                      <i class="fas fa-eye"></i>
+                    <%end%>
+                  </div>
+                  </div>
+                  </td>
+                </tbody>
+              <%end%>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

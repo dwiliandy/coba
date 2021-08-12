@@ -28,5 +28,6 @@ class User < ApplicationRecord
          :length => {:within => 6..40},
          :allow_blank => true,
          :on => :update
-  
+  enum role: {pelayan: 0, admin: 1}
+
 end

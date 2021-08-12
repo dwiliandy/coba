@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SionerzDB</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body id="page-top">
+   <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+      <% if current_user.blank?%>
+        <%= yield %>
+      <%else%>
+      <div id="wrapper">
+        <%= render'admins/shared/navbar'%>
+        <div id="content-wrapper" class="d-flex flex-column">
+          <div id="content">
+            <%= render 'admins/shared/header'%>
+            <%= yield %>
+          </div>
+          <%= render 'admins/shared/footer'%>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Yakin untuk Keluar?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+              <%= link_to "Keluar", destroy_user_session_path, :method => :delete, :class =>"btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </body>
+</html>
