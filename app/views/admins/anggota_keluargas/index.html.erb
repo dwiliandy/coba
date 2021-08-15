@@ -9,12 +9,12 @@
         <div class="col-lg-6 col-md-12">
         <%= search_form_for @q, url: admins_anggota_keluargas_path do |f| %>               
           <div class="row">
-            <div class="col-9">
-              <%= f.search_field :nama_cont, placeholder: "Cari Nama", class: 'form-control admin-search  col-12' %>
+            <div class="col-lg-6 col-md-12">
+              <%= f.search_field :nama_cont, placeholder: "Cari Nama", class: 'form-control admin-search  col-12 with-margin' %>
             </div>
-            <div class="col-3">
-              <%= f.button :Search, class: "btn btn-success col-lg-6 with-margin" do%>    
-                <i class="fas fa-search"></i>
+            <div class="col-lg-6 col-md-12">
+              <%= f.button :Search, class: "btn btn-success col-lg-6 col-md-12 with-margin" do%>    
+                <i class="fas fa-search"></i> Search
               <%end%> 
             </div>  
           </div>

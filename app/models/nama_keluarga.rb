@@ -7,6 +7,7 @@
 #  kolom                :string
 #  nama                 :string
 #  nomor_kartu_keluarga :string
+#  tanggal_pernikahan   :date
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #

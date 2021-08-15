@@ -49,7 +49,7 @@ class Admins::NamaKeluargasController < AdminsController
 
   def nama_keluarga_params
     params.require(:nama_keluarga).permit(
-      :nama, :nomor_kartu_keluarga, :kolom, :active, 
+      :nama, :nomor_kartu_keluarga, :kolom, :active, :tanggal_pernikahan,
       anggota_keluargas_attributes: [
         :id, :nama, :jenis_kelamin, :nik, 
         :tanggal_lahir, :tempat_lahir, 

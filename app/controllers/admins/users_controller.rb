@@ -1,7 +1,7 @@
 class Admins::UsersController < AdminsController
   before_action  :set_user, only: [:update, :edit, :change_password]
   def update
-    if @user.update(users_params)
+    if @user.update_with_password(users_params)
       redirect_to root_path, notice: 'Password Berhasil Diganti.'
     else
       render 'change_password'
@@ -16,7 +16,7 @@ class Admins::UsersController < AdminsController
 
   def users_params
     params.require(:user).permit(
-      :email, :username, :password, :password_confirmation)
+      :email, :current_password, :username, :password, :password_confirmation)
   end
 
 end
