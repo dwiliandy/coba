@@ -5,16 +5,18 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
 
-  def after_sign_in_path_for(resource_or_scope)
+
+  def after_sign_in_path_for(resource)
     # check for the class of the object to determine what type it is
     case resource.role
     when "admin"
-      admins_pages_index_path
+      admins_dashboard_path
     when "pelayan"
-      stored_location_for(resource_or_scope) || super
+      #Belum ada fiturnya
     else
-      root_path
+      stored_location_for(resource_or_scope) || root_path
     end
+
   end
 
   private

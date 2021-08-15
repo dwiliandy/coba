@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(email:'admin@admin.com', username:'admin', password:'password', role:100, name:'admin')
+User.create(email:'admin@admin.com', username:'admin', password:'password', role:'admin', name:'admin')
 
 30.times { |i| Kolom.create(nama: i+1) }

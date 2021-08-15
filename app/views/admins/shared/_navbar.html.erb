@@ -8,7 +8,7 @@
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item active">
-      <%=link_to admins_pages_index_path, class: "nav-link" do%>
+      <%=link_to admins_dashboard_path, class: "nav-link" do%>
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
       <%end%>
@@ -78,6 +78,13 @@
     <%=link_to admins_koloms_path, class: "nav-link" do%>
           <i class="fas fa-church"></i>
           <span>Kolom</span></a>
+    <%end%>
+  </li>
+  <hr class="sidebar-divider">
+  <li class="nav-item active">
+    <%=link_to admins_keuangans_path, class: "nav-link" do%>
+          <i class="fas fa-money-bill-wave"></i>
+          <span>Keuangan</span></a>
     <%end%>
   </li>
 </ul>

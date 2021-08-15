@@ -6,7 +6,7 @@ Rails.application.routes.draw do
  
     #Route Admin
     namespace :admins do
-      get 'pages/index' => 'pages#index'
+      get 'dashboard' => 'pages#index'
       resources :nama_keluargas, except: [:destroy]
       resources :anggota_keluargas_imports, only: [:new, :create]
       resources :anggota_keluargas do
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
         end
       end
       resources :koloms
+      resources :keuangans
       
     end
 

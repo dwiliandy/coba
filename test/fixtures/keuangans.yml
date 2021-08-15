@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: keuangans
+#
+#  id         :bigint           not null, primary key
+#  keterangan :text
+#  nominal    :integer
+#  tipe       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  nominal: 1
+  tipe: 1
+  keterangan: MyText
+
+two:
+  nominal: 1
+  tipe: 1
+  keterangan: MyText
