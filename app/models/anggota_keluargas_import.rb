@@ -108,6 +108,10 @@ class AnggotaKeluargasImport
   def save
     if imported_items.map(&:valid?).all?
       imported_items.each(&:save!)
+      a = imported_items.pluck(:nama_keluarga_id).uniq
+        NamaKeluarga.where(id: a).each do |namas|
+        namas.daftar_ulang_tahun_pernikahan
+      end
       true
     else
       imported_items.each_with_index do |item, index|

@@ -2,15 +2,15 @@
 #
 # Table name: nama_keluargas
 #
-#  id                        :bigint           not null, primary key
-#  UlangTahunPernikahanAktif :boolean          default(TRUE)
-#  active                    :boolean          default(TRUE)
-#  kolom                     :string
-#  nama                      :string
-#  nomor_kartu_keluarga      :string
-#  tanggal_pernikahan        :date
-#  created_at                :datetime         not null
-#  updated_at                :datetime         not null
+#  id                           :bigint           not null, primary key
+#  active                       :boolean          default(TRUE)
+#  kolom                        :string
+#  nama                         :string
+#  nomor_kartu_keluarga         :string
+#  tanggal_pernikahan           :date
+#  ulang_tahun_pernikahan_aktif :boolean          default(TRUE)
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
 #
 
 one:

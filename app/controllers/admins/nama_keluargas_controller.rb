@@ -27,6 +27,7 @@ class Admins::NamaKeluargasController < AdminsController
     @nama_keluarga = NamaKeluarga.new(nama_keluarga_params)
 
       if @nama_keluarga.save
+        @nama_keluarga.daftar_ulang_tahun_pernikahan
       	redirect_to admins_nama_keluargas_path, notice: 'Nama Keluarga berhasil dibuat'
       else
         render 'new'
@@ -36,6 +37,7 @@ class Admins::NamaKeluargasController < AdminsController
   def update
     respond_to do |format|
       if @nama_keluarga.update(nama_keluarga_params)
+        @nama_keluarga.daftar_ulang_tahun_pernikahan
         format.html { redirect_to admins_nama_keluargas_path, notice: 'Nama Keluarga berhasil Diupdate.' }
         format.json { render :show, status: :ok, location: @nama_keluarga }
       else

@@ -1,0 +1,31 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  project_heading = style.add_style(b: true, sz: 14)
+  heading = style.add_style(b: true)
+
+  wb.add_worksheet(name: "Ulang Tahun Minggu Ini") do |sheet|
+    # Add a title row
+    sheet.add_row ["Ulang Tahun Kelahiran"], style: project_heading
+    # Add a blank row
+    sheet.add_row []
+    # Create the header row
+    sheet.add_row ["No", "Nama Anggota","Umur Ke", "Nama Keluarga","Kolom"], style: heading
+    # Create entries for each item
+    AnggotaKeluarga.ulang_tahun(Date.today.beginning_of_week.month,Date.today.end_of_week.month,Date.today.beginning_of_week.day,Date.today.end_of_week.day).includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc").each_with_index do |anggota,index|
+      sheet.add_row [index+1, anggota.nama,anggota.umur+1, anggota.nama_keluarga.nama, anggota.nama_keluarga.kolom]
+    end
+    # Add a blank row
+    sheet.add_row []
+    # Add a title row
+    sheet.add_row ["Ulang Tahun Pernikahan"], style: project_heading
+    # Add a blank row
+    sheet.add_row []
+    # Create the header row
+    sheet.add_row ["No", "Ulang Tahun Ke","Keluarga","Kolom"], style: heading
+    # Create entries for each item
+    NamaKeluarga.ulang_tahun(Date.today.beginning_of_week.month,Date.today.end_of_week.month,Date.today.beginning_of_week.day,Date.today.end_of_week.day).order("kolom::integer asc").each_with_index do |nama,index|
+      sheet.add_row [index+1, nama.umur_pernikahan + 1, nama.nama, nama.kolom]
+    end
+  end
+end

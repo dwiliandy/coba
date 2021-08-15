@@ -16,10 +16,6 @@ Rails.application.routes.draw do
           get 'pemuda'
           get 'remaja'
           get 'asm'
-          get 'ulang_tahun_minggu_ini'
-          get 'ulang_tahun_minggu_depan'
-          get 'lahir_tahun_ini'
-          get 'meninggal_tahun_ini'
           get 'template'
         end
         member do
@@ -33,6 +29,10 @@ Rails.application.routes.draw do
       end
       resources :koloms
       resources :keuangans
+      get 'meninggal_tahun_ini' => 'data_lain_lains#meninggal_tahun_ini'
+      get 'lahir_tahun_ini' => 'data_lain_lains#lahir_tahun_ini'
+      get 'ulang_tahun_minggu_depan' => 'data_lain_lains#ulang_tahun_minggu_depan'
+      get 'ulang_tahun_minggu_ini' => 'data_lain_lains#ulang_tahun_minggu_ini'
       
     end
 

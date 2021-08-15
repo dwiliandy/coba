@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_08_15_015512) do
     t.string "kolom"
     t.boolean "active", default: true
     t.date "tanggal_pernikahan"
-    t.boolean "UlangTahunPernikahanAktif", default: true
+    t.boolean "ulang_tahun_pernikahan_aktif", default: true
   end
 
   create_table "users", force: :cascade do |t|
