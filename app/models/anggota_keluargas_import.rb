@@ -35,11 +35,13 @@ class AnggotaKeluargasImport
           anggota.nama_keluarga.nama = row['Nama Keluarga']
           anggota.nama_keluarga.nomor_kartu_keluarga = row['Nomor Kartu Keluarga'].to_s
           anggota.nama_keluarga.kolom = row['Nama Kolom']
+          anggota.nama_keluarga.tanggal_pernikahan = row['Tanggal Pernikahan']
         else
           anggota.nama_keluarga = NamaKeluarga.new
           anggota.nama_keluarga.nama = row['Nama Keluarga']
           anggota.nama_keluarga.nomor_kartu_keluarga = row['Nomor Kartu Keluarga'].to_s
           anggota.nama_keluarga.kolom = row['Kolom']
+          anggota.nama_keluarga.tanggal_pernikahan = row['Tanggal Pernikahan']
           anggota.nama_keluarga.save
         end
       else
@@ -47,6 +49,7 @@ class AnggotaKeluargasImport
         anggota.nama_keluarga.nama = row['Nama Keluarga']
         anggota.nama_keluarga.nomor_kartu_keluarga = row['Nomor Kartu Keluarga'].to_s
         anggota.nama_keluarga.kolom = row['Kolom']
+        anggota.nama_keluarga.tanggal_pernikahan = row['Tanggal Pernikahan']
         anggota.nama_keluarga.save
       end
         anggota.nama = row['Nama Anggota']

@@ -17,6 +17,7 @@ wb.styles do |style|
     # Create the header row
     sheet.add_row ["Nama Keluarga", 
     "Nomor Kartu Keluarga",
+    "Tanggal Pernikahan"
     "Kolom", 
     "Nama Anggota",
     "Nik",
@@ -31,6 +32,7 @@ wb.styles do |style|
     AnggotaKeluarga.where(meninggal: false).includes(:nama_keluarga).order("nama_keluarga.kolom::integer asc, nama_keluarga.id desc").each do |anggota|
       sheet.add_row [anggota.nama_keluarga.nama.split("_").map(&:capitalize).join(" "),
       anggota.nama_keluarga.nomor_kartu_keluarga,
+      anggota.nama_keluarga.tanggal_pernikahan
       anggota.nama_keluarga.kolom, 
       anggota.nama,
       anggota.nik,
